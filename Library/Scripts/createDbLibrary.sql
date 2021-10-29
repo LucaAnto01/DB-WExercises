@@ -2,26 +2,26 @@
 /**Create DB*/
 CREATE DATABASE Library;
 
-/**Use/enter DB*/
+/**Use enter DB*/
 USE Library;
 
-/**Creation table of UserCategories*/
-CREATE TABLE UserCategories(
+/**Creation table of AccountCategories*/
+CREATE TABLE AccountCategories(
     code integer primary key NOT NULL AUTO_INCREMENT,
     categoryName varchar(50)
 );
 
 /**Creation table of Account*/
 CREATE TABLE Account(
-    userCode integer primary key NOT NULL AUTO_INCREMENT,
-    fkUserCat integer,
+    accountCode integer primary key NOT NULL AUTO_INCREMENT,
+    fkAccountCat integer,
     firstName varchar(50),
     lastName varchar(80),
     age tinyint(2),
     sex enum('M', 'F'),
     address varchar(100),
     telephone varchar(10),
-    FOREIGN KEY (fkUserCat) REFERENCES UserCategories(code)
+    FOREIGN KEY (fkAccountCat) REFERENCES AccountCategories(code)
 );
 
 /**Creation table of Gender*/
@@ -46,10 +46,10 @@ CREATE TABLE Book(
 /**Creation table of Loan*/
 CREATE TABLE Loan(
     loanCode integer primary key NOT NULL AUTO_INCREMENT,
-    fkUserCode integer,
+    fkAccountCode integer,
     fkBookCode integer,
     loanDate date,
     loanDurate integer,
-    FOREIGN KEY (fkUserCode) REFERENCES Account(userCode),
+    FOREIGN KEY (fkAccountCode) REFERENCES Account(accountCode),
     FOREIGN KEY (fkBookCode) REFERENCES Book(bookCode)
 );
