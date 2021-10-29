@@ -1,13 +1,18 @@
-CREATE DATABASE 317286;
+/**@author: Luca Antognarelli*/
+/**Create DB*/
+CREATE DATABASE Library;
 
-USE 317286;
+/**Use/enter DB*/
+USE Library;
 
+/**Creation table of UserCategories*/
 CREATE TABLE UserCategories(
     code integer primary key NOT NULL AUTO_INCREMENT,
     categoryName varchar(50)
 );
 
-CREATE TABLE User(
+/**Creation table of Account*/
+CREATE TABLE Account(
     userCode integer primary key NOT NULL AUTO_INCREMENT,
     fkUserCat integer,
     firstName varchar(50),
@@ -19,11 +24,13 @@ CREATE TABLE User(
     FOREIGN KEY (fkUserCat) REFERENCES UserCategories(code)
 );
 
+/**Creation table of Gender*/
 CREATE TABLE Gender(
     genderCode integer primary key NOT NULL AUTO_INCREMENT,
     genderName varchar(50)
 );
 
+/**Creation table of Book*/
 CREATE TABLE Book(
     bookCode integer primary key NOT NULL AUTO_INCREMENT,
     fkGenderCode integer,
@@ -36,12 +43,13 @@ CREATE TABLE Book(
     FOREIGN KEY (fkGenderCode) REFERENCES Gender(genderCode)
 );
 
+/**Creation table of Loan*/
 CREATE TABLE Loan(
     loanCode integer primary key NOT NULL AUTO_INCREMENT,
     fkUserCode integer,
     fkBookCode integer,
     loanDate date,
     loanDurate integer,
-    FOREIGN KEY (fkUserCode) REFERENCES User(userCode),
+    FOREIGN KEY (fkUserCode) REFERENCES Account(userCode),
     FOREIGN KEY (fkBookCode) REFERENCES Book(bookCode)
 );
