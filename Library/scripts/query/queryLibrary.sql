@@ -1,3 +1,4 @@
+/**@author: Luca Antognarelli*/
 SELECT bookCode, title 
 FROM book 
 WHERE editor = "MondoLibro";
