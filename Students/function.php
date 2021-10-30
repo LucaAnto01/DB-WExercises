@@ -1,4 +1,6 @@
 <?php
+    /**@author: Luca Antognarelli*/
+    
     /**Associative array containing the specifications of each student */
     $spefifiche = array();
     
