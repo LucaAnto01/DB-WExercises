@@ -1,18 +1,27 @@
 <html>
+
     <head>
         <title>
             Student exercise
         </title>
+
+        <script src="script/script.js"></script> 
     </head>
+
     <body>
-        <h3>Search by:</h3>
-        <form action = "function.php" method = "post">
-            <select name = "research">
-                <option value = "matricola">matricola</option>
-                <option value = "surname">surname</option>
-                <option value = "telephone">telephone</option>
-            </select>
-            <input type = "submit">
+        <h2>STUDENT INFO</h2>
+
+        <form method = "post" name = "shByMatricola" id ="dataForm">
+            <input type = "text" name = "matricola" placeholder = "Matricola">
+            <input type = "text" name = "surname" placeholder = "Surname">
+            <br />
+            <input type = "radio" name = "choice" value = "studentInfo" id = "stInfo" checked> 
+            <label for = "stInfo">Student info</label>
+            <input type = "radio" name = "choice" value = "examStudentInfo" id = "exStInfo">
+            <label for = "exStInfo">Student exam info</label>
+            <br />
+            <input type = "button" value = "SEARCH" onclick = "CheckValue()">
         </form>
     </body>
+
 </html>
