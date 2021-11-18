@@ -68,3 +68,17 @@ SELECT year(loan.loanDate) AS year, gender.genderName, COUNT(*) AS loanNumber
 FROM loan, book, gender
 WHERE loan.fkBookCode = book.bookCode AND gender.genderCode = book.fkGenderCode
 GROUP BY loan.loanDate;
+
+/*Genders for which there were more than 1 loans in 2021*/
+SELECT gender.genderName, COUNT(*) as loan_number
+FROM loan, book, gender
+WHERE loan.fkBookCode = book.bookCode AND book.fkGenderCode = gender.genderCode AND YEAR(loan.loanDate) = 2021
+GROUP BY gender.genderName
+HAVING loan_number > 1;
+
+/*List of Lucillo's books, in descending order for number of loans. */
+SELECT book.title, COUNT(*) loan_number
+FROM loan, book, gender
+WHERE loan.fkBookCode = book.bookCode AND book.fkGenderCode = gender.genderCode AND book.author = 'Lucillo'
+GROUP BY book.title
+ORDER BY loan_number DESC;
