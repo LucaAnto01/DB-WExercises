@@ -82,3 +82,25 @@ FROM loan, book, gender
 WHERE loan.fkBookCode = book.bookCode AND book.fkGenderCode = gender.genderCode AND book.author = 'Lucillo'
 GROUP BY book.title
 ORDER BY loan_number DESC;
+
+/*Shelf with several books*/
+SELECT book.shelf, COUNT(*) AS numberBooks
+FROM book
+GROUP BY book.shelf
+HAVING numberBooks >= ALL(
+	SELECT COUNT(*) AS numberBooks
+	FROM book
+	GROUP BY book.shelf);
+
+/*The gender for which fewer books were borrowed in 2020 */
+SELECT gender.genderName, COUNT(*) AS num_loan
+FROM book JOIN gender ON book.fkGenderCode = gender.genderCode
+		  JOIN loan ON book.bookCode = loan.fkBookCode
+WHERE YEAR(loan.loanDate) = 2020
+GROUP BY gender.genderName
+HAVING num_loan <= ALL (SELECT COUNT(*) AS num_loan
+                        FROM book JOIN gender ON book.fkGenderCode = gender.genderCode
+                        JOIN loan ON book.bookCode = loan.fkBookCode
+                        WHERE YEAR(loan.loanDate) = 2020
+                        GROUP BY gender.genderName);
+
