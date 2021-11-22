@@ -43,7 +43,8 @@ CREATE TABLE course(
     fkTeacherCode integer(5),
     courseName varchar(50),
     primary key (code),
-    FOREIGN KEY (fkCodeDepartment) REFERENCES department(code)
+    FOREIGN KEY (fkCodeDepartment) REFERENCES department(code),
+    FOREIGN KEY (fkTeacherCode) REFERENCES teacher(code)
 );
 
 CREATE TABLE exams(
