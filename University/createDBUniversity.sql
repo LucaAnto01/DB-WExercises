@@ -40,6 +40,7 @@ CREATE TABLE students(
 CREATE TABLE course(
     code integer(5) AUTO_INCREMENT,
     fkCodeDepartment integer(5),
+    fkTeacherCode integer(5),
     courseName varchar(50),
     primary key (code),
     FOREIGN KEY (fkCodeDepartment) REFERENCES department(code)
