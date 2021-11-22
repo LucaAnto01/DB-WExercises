@@ -1,3 +1,10 @@
 INSERT INTO teacher(firstname, lastname) VALUES ('Gianni', 'Somma');
 INSERT INTO teacher(firstname, lastname) VALUES ('Chiara', 'Differenza');
 INSERT INTO teacher(firstname, lastname) VALUES ('Giuseppe', 'Moltiplicazione');
+INSERT INTO teacher(firstname, lastname) VALUES ('Franco', 'Francesco');
+INSERT INTO teacher(firstname, lastname) VALUES ('Chiara', 'Giuseppa');
+INSERT INTO teacher(firstname, lastname) VALUES ('Franca', 'Poli');
+INSERT INTO teacher(firstname, lastname) VALUES ('Andrea', 'Dibbari');
+INSERT INTO teacher(firstname, lastname) VALUES ('Elisa', 'Derroma');
+INSERT INTO teacher(firstname, lastname) VALUES ('Alberto', 'Paga');
+INSERT INTO teacher(firstname, lastname) VALUES ('Chiara', 'Differenza');
