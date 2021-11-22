@@ -161,3 +161,9 @@ FROM loan_info li
 WHERE li.gender_genderName = "Commedy" AND li.gender_genderName <> "Horror"
 GROUP BY li.account_firstName
 HAVING loan_number > 5;
+
+/*v: Delete the records relating to books write by Lucillo*/
+DELETE FROM book
+WHERE bookCode = (SELECT bookCode
+                  FROM book
+                  WHERE author = "Lucillo");
