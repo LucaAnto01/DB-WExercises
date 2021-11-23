@@ -23,6 +23,8 @@ CREATE TABLE graduateCourse(
     graduateCourseName varchar(50),
     primary key (code),
     FOREIGN KEY (fkCodeDepartment) REFERENCES department(code)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE 
 );
 
 CREATE TABLE students(
@@ -35,6 +37,8 @@ CREATE TABLE students(
     telephone varchar(10),
     primary key (matricola),
     FOREIGN KEY (fkGraduateCourse) REFERENCES graduateCourse(code)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE 
 );
 
 CREATE TABLE course(
@@ -45,6 +49,8 @@ CREATE TABLE course(
     primary key (code),
     FOREIGN KEY (fkCodeDepartment) REFERENCES department(code),
     FOREIGN KEY (fkTeacherCode) REFERENCES teacher(code)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE 
 );
 
 CREATE TABLE exams(
@@ -53,6 +59,9 @@ CREATE TABLE exams(
     dataExam date,
     vote tinyint(2) CHECK(vote > 0 && vote <= 30),
     honours enum('Y', 'N'),
+    primary key (fkMatricola, fkCourseCode),
     FOREIGN KEY (fkMatricola) REFERENCES students(matricola),
     FOREIGN KEY (fkCourseCode) REFERENCES course(code)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE 
 );
