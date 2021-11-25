@@ -49,10 +49,8 @@
                 }
                 $examInfo.="<br>";
             }
-
             echo $examInfo;
         }
-
         $examInfo .= "</h4>"; 
     }
 
