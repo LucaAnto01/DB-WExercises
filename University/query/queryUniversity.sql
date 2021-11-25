@@ -1,3 +1,5 @@
+/**@author: Luca Antognarelli*/
+
 /*1: the courses taught by Professor Chiara Differenza who teaches IT & Cloud and not by Professor Chiara Differenza who teaches Finance*/
 SELECT teacher.firstname, teacher.lastname, course.courseName 
 FROM course, teacher
