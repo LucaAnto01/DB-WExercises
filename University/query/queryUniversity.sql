@@ -11,16 +11,11 @@ GROUP BY teacher.lastname, course.courseName
 ORDER BY course.code;
 
 /*3: the department at which the highest number of examinations were taken in 2002*/
-/*TODO: fix this*/
-SELECT department.departmentName, COUNT(*) AS exam_number
-FROM exams JOIN students ON exams.fkMatricola = students.matricola
-           JOIN graduatecourse ON students.fkGraduateCourse = graduatecourse.code
-           JOIN department ON graduatecourse.fkCodeDepartment = department.code
-WHERE YEAR(exams.dataExam) = 2020
-HAVING exam_number >= ALL (SELECT COUNT(*)
-                           FROM exams JOIN students ON exams.fkMatricola = students.matricola
-                           JOIN graduatecourse ON students.fkGraduateCourse = graduatecourse.code
-                           JOIN department ON graduatecourse.fkCodeDepartment = department.code
-                           WHERE YEAR(exams.dataExam) = 2020
-                           GROUP BY department.departmentName)
+SELECT department.departmentName, COUNT(*) AS NUM_EXAM
+FROM exams, course, department
+WHERE exams.fkCourseCode = course.code AND course.fkCodeDepartment = department.code
 GROUP BY department.departmentName
+HAVING NUM_EXAM >= ALL (SELECT COUNT(*) AS NUM_EXAM
+                        FROM exams, course, department
+                        WHERE exams.fkCourseCode = course.code AND course.fkCodeDepartment = department.code
+                        GROUP BY department.departmentName);
